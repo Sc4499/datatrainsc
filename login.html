@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<link>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</link>
+<link href="./login.css" rel="stylesheet">
+</link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>My Dream Place</title>
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <a href="./index.html"><span><i class="fa-solid fa-plane"></i></span>my Dream Place</a>
+            </div>
+        </div>
+    </header>
+    <section class="container forms">
+        <div class="form login">
+            <div class="form-content">
+                <h4 class="toptitle">Sign In</h4>
+                <form action="#">
+                    <label class="fname">Enter email</label>
+                    <div class="field input-field">
+                        <input type="email" placeholder="Email" class="input">
+                    </div>
+                    <label class="fname">Enter Password</label>
+                    <div class="field input-field">
+                        <input type="password" placeholder="Password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+                    <div class="form-link">
+                        <span> <label class="containerbox">keep me signed in
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label></span>
+
+                        <a href="#" class="forgot-pass">Forgot password?</a>
+                    </div>
+                    <div class="field button-field">
+                        <button>Continue with email</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="line"></div>
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Login with Facebook</span>
+                </a>
+            </div>
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <i class="fa-brands fa-google"></i>
+                    <span class="icons">Login with Google</span>
+                </a>
+            </div>
+            <div class="form-link-two">
+                <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const theBody = document.querySelector('body');
+        const openNav = document.querySelector('.menu-bar button');
+        const closeNav = document.querySelector('.close-nav button');
+        const Navbar = document.querySelector('.navbar');
+
+        // Hiding body scroll when mobile navigation menu opens
+        function bodyScroll() {
+            if (Navbar.classList.contains('show')) {
+                theBody.classList.add('hide-scroll');
+            } else if (theBody.classList.contains('hide-scroll')) {
+                theBody.classList.remove('hide-scroll');
+            }
+        }
+
+        function showHide() {
+            Navbar.classList.toggle('show');
+            bodyScroll();
+        }
+
+        openNav.onclick = showHide;
+        closeNav.onclick = showHide;
+
+        const forms = document.querySelector(".forms"),
+            pwShowHide = document.querySelectorAll(".eye-icon"),
+            links = document.querySelectorAll(".link");
+        pwShowHide.forEach(eyeIcon => {
+            eyeIcon.addEventListener("click", () => {
+                let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+
+                pwFields.forEach(password => {
+                    if (password.type === "password") {
+                        password.type = "text";
+                        eyeIcon.classList.replace("bx-hide", "bx-show");
+                        return;
+                    }
+                    password.type = "password";
+                    eyeIcon.classList.replace("bx-show", "bx-hide");
+                })
+
+            })
+        })  
+    </script>
+</body>
+
+</html>
